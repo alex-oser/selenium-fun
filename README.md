@@ -5,6 +5,6 @@ Random Selenium scripts created by me to have some fun.
 * google_form.py provides a template to use Selenium on Google Forms.
 
 In order to run these scripts you must:
---* Install Selenium: pip install selenium
---* [Download](https://chromedriver.storage.googleapis.com/index.html?path=2.27/) the correct Chromedriver for your platform
---* Specify the location of the driver on your local file system in the script
+..* Install Selenium: pip install selenium
+..* [Download](https://chromedriver.storage.googleapis.com/index.html?path=2.27/) the correct Chromedriver for your platform
+..* Specify the location of the driver on your local file system in the script
