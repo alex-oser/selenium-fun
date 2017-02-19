@@ -2,6 +2,7 @@ from selenium import webdriver
 from selenium.common.exceptions import WebDriverException
 from selenium.common.exceptions import StaleElementReferenceException
 from selenium.common.exceptions import NoSuchElementException
+import time
 
 driver = webdriver.Chrome('./chromedriver.mac')
 driver.get('https://en.wikipedia.org/wiki/Main_page')
@@ -27,7 +28,8 @@ while pages_visited < pages_to_visit:
 				try:
 					hrefs = p[i].find_elements_by_xpath('./a[@href]')
 					for href in hrefs:
-						if not '#' in href.get_attribute('outerHTML'):
+						if not '#' in href.get_attribute('outerHTML') and not 'Help' in href.get_attribute('outerHTML') \
+						and not 'Greek' in href.get_attribute('innerHTML'):
 							link = href
 							break
 					i += 1
@@ -35,6 +37,7 @@ while pages_visited < pages_to_visit:
 					print 'exception'
 					i += 1
 			driver.implicitly_wait(10)
+			print 'about to click:', link.get_attribute('innerHTML')
 			link.click()
 			title = driver.find_element_by_id('firstHeading').get_attribute('innerHTML')
 			clicks += 1
